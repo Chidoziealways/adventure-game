@@ -9,5 +9,11 @@ module.exports = merge(common, {
     hot: true,
     open: true,
     static: ['./'],
+    historyApiFallback: {
+      index: '/index.html', // Default fallback
+      rewrites: [
+        { from: /.*/, to: '/404.html' } // Fallback to 404.html for all unmatched routes
+      ]
+    }
   },
 });
