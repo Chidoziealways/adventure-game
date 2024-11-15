@@ -1,4 +1,5 @@
 const { merge } = require('webpack-merge');
+const path = require('path');
 const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
@@ -8,7 +9,16 @@ module.exports = merge(common, {
     liveReload: true,
     hot: true,
     open: true,
-    static: ['./'],
+    static: [
+      {
+        directory: path.join(__dirname, 'public'),
+        publicPath: '/',
+      },
+      {
+        directory: path.join(__dirname, 'images'),
+        publicPath: '/images',
+      }
+    ],
     historyApiFallback: {
       index: '/index.html', // Default fallback
       rewrites: [
